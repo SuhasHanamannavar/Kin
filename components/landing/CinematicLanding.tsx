@@ -704,6 +704,25 @@ export default function CinematicLanding() {
               View live on kinbrightdata.vercel.app
               <ArrowRight size={14} />
             </a>
+            
+            {/* Landing page showcase screenshot */}
+            <div className="mt-8 relative">
+              <div 
+                className="absolute -inset-2 rounded-2xl opacity-50 pointer-events-none"
+                style={{
+                  background: 'linear-gradient(135deg, rgba(45,95,138,0.15), rgba(220,38,38,0.1))',
+                  filter: 'blur(12px)'
+                }}
+              />
+              <div className="relative rounded-xl overflow-hidden shadow-xl border border-[rgba(0,0,0,0.1)]">
+                <img 
+                  src="/images/landing-showcase.jpg" 
+                  alt="Kin landing page showcase - cinematic design with Spider-Man theme"
+                  className="w-full h-auto block"
+                  loading="lazy"
+                />
+              </div>
+            </div>
           </div>
         </div>
       </section>
