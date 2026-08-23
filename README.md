@@ -19,7 +19,8 @@
 
 Experience Kin live at **[kinbrightdata.vercel.app](https://kinbrightdata.vercel.app/)**
 
-![Kin Landing Page Showcase](docs/assets/screenshots/00-landing-showcase.jpg)
+![Kin Landing Page Showcase](docs/assets/screenshots/<img width="1600" height="1148" alt="landingpage" src="https://github.com/user-attachments/assets/706e895b-f7ef-43cd-a813-8f0a5447a4d7" />
+)
 
 The landing page features a cinematic, scroll-driven design with:
 - 🕷️ Spider-Man themed hero with animated web strings
