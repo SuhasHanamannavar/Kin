@@ -705,24 +705,6 @@ export default function CinematicLanding() {
               <ArrowRight size={14} />
             </a>
             
-            {/* Landing page showcase screenshot */}
-            <div className="mt-8 relative">
-              <div 
-                className="absolute -inset-2 rounded-2xl opacity-50 pointer-events-none"
-                style={{
-                  background: 'linear-gradient(135deg, rgba(45,95,138,0.15), rgba(220,38,38,0.1))',
-                  filter: 'blur(12px)'
-                }}
-              />
-              <div className="relative rounded-xl overflow-hidden shadow-xl border border-[rgba(0,0,0,0.1)]">
-                <img 
-                  src="/images/landing-showcase.jpg" 
-                  alt="Kin landing page showcase - cinematic design with Spider-Man theme"
-                  className="w-full h-auto block"
-                  loading="lazy"
-                />
-              </div>
-            </div>
           </div>
         </div>
       </section>
@@ -1261,6 +1243,114 @@ export default function CinematicLanding() {
         </div>
       </section>
 
+      {/* ============================================================
+           HACKATHON STORY - SPIDER-MAN VIDEO
+           ============================================================ */}
+      <section id="story" className="relative py-32 px-6 overflow-hidden"
+        style={{ background: '#0A0A0F' }}>
+        
+        {/* Background effects */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div 
+            className="absolute inset-0"
+            style={{
+              background: 'radial-gradient(ellipse at 30% 50%, rgba(220,38,38,0.15) 0%, transparent 50%), radial-gradient(ellipse at 70% 50%, rgba(45,95,138,0.15) 0%, transparent 50%)'
+            }}
+          />
+          <div 
+            className="absolute inset-0 opacity-[0.03]"
+            style={{
+              backgroundImage: `linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)`,
+              backgroundSize: '50px 50px'
+            }}
+          />
+        </div>
+
+        <div className="max-w-[900px] mx-auto relative z-10">
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-[11px] font-semibold tracking-[0.1em] uppercase mb-4"
+              style={{ background: 'rgba(220,38,38,0.15)', color: '#EF4444' }}>
+              <span className="w-2 h-2 rounded-full animate-pulse" style={{ background: '#EF4444' }} />
+              Scrape-Verse Hackathon 2026
+            </div>
+            <h2 className="font-bold tracking-tight mb-4"
+              style={{ fontSize: 'clamp(32px, 5vw, 52px)', color: 'white' }}>
+              Born from madness.<br />
+              <span style={{ color: '#EF4444' }}>Forged in chaos.</span>
+            </h2>
+            <p className="text-white/60 max-w-[500px] mx-auto"
+              style={{ fontSize: 'clamp(14px, 1.5vw, 16px)' }}>
+              WeMakeDevs × Bright Data. This is the story of how Kin came to life.
+            </p>
+          </div>
+
+          {/* Video container */}
+          <div className="relative rounded-2xl overflow-hidden shadow-2xl"
+            style={{ 
+              border: '1px solid rgba(255,255,255,0.1)',
+              aspectRatio: '16/9',
+              background: '#000'
+            }}>
+            <video
+              ref={videoRef}
+              className="w-full h-full object-cover"
+              autoPlay
+              loop
+              muted
+              playsInline
+              poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 9'%3E%3Crect fill='%230A0A0F' width='16' height='9'/%3E%3C/svg%3E"
+            >
+              <source src="/videos/spiderman-hackathon.mp4" type="video/mp4" />
+            </video>
+
+            {/* Subtitle overlay */}
+            <div className="absolute bottom-0 left-0 right-0 p-6 pointer-events-none">
+              <div 
+                className="text-center transition-all duration-500"
+                key={currentSubtitle}
+              >
+                <span 
+                  className="inline-block px-5 py-2 rounded-lg text-white font-medium"
+                  style={{ 
+                    background: 'rgba(0,0,0,0.75)',
+                    backdropFilter: 'blur(10px)',
+                    fontSize: 'clamp(14px, 2vw, 18px)',
+                    textShadow: '0 2px 10px rgba(0,0,0,0.5)'
+                  }}
+                >
+                  {hackathonSubtitles[currentSubtitle]?.text || hackathonSubtitles[0].text}
+                </span>
+              </div>
+            </div>
+
+            {/* Video border glow */}
+            <div 
+              className="absolute inset-0 pointer-events-none rounded-2xl"
+              style={{
+                boxShadow: 'inset 0 0 60px rgba(220,38,38,0.1)',
+                border: '1px solid rgba(255,255,255,0.05)'
+              }}
+            />
+          </div>
+
+          {/* Tech stack badges */}
+          <div className="mt-10 flex flex-wrap justify-center gap-3">
+            {['Next.js 14', 'TypeScript', 'Bright Data', 'Clerk', 'Supabase', 'Zen Mimo AI', 'Groq', 'Resend'].map((tech, i) => (
+              <span 
+                key={i}
+                className="px-4 py-2 rounded-full text-[12px] font-medium"
+                style={{ 
+                  background: 'rgba(255,255,255,0.06)',
+                  border: '1px solid rgba(255,255,255,0.1)',
+                  color: 'rgba(255,255,255,0.7)'
+                }}
+              >
+                {tech}
+              </span>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* ============================================================
            CTA SECTION
