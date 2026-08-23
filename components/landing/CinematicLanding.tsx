@@ -90,6 +90,35 @@ export default function CinematicLanding() {
       });
 
       // ============================================================
+      // DASHBOARD PREVIEW ANIMATION
+      // ============================================================
+      gsap.from('.dashboard-mockup', {
+        y: 80,
+        opacity: 0,
+        scale: 0.95,
+        rotationX: 10,
+        duration: 1,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: '.dashboard-preview-section',
+          start: 'top 75%',
+          toggleActions: 'play none none reverse'
+        }
+      });
+
+      gsap.from('.dashboard-mockup > div:first-child', {
+        opacity: 0,
+        scale: 0.8,
+        duration: 0.8,
+        delay: 0.2,
+        scrollTrigger: {
+          trigger: '.dashboard-preview-section',
+          start: 'top 75%',
+          toggleActions: 'play none none reverse'
+        }
+      });
+
+      // ============================================================
       // PROBLEM SECTION - CHAOS VISUALIZATION
       // ============================================================
       gsap.utils.toArray<HTMLElement>('.chaos-item').forEach((item, i) => {
@@ -505,6 +534,176 @@ export default function CinematicLanding() {
           <span className="text-[10px] font-semibold tracking-[0.15em] uppercase text-[#8A8D9A]">Scroll</span>
           <div className="w-6 h-10 rounded-full border-2 border-[#8A8D9A]/40 flex items-start justify-center p-1">
             <div className="w-1 h-2 rounded-full bg-[#8A8D9A]/60" />
+          </div>
+        </div>
+      </section>
+
+      {/* ============================================================
+           DASHBOARD PREVIEW - Show product immediately after hero
+           ============================================================ */}
+      <section className="dashboard-preview-section relative py-20 px-6 overflow-hidden"
+        style={{ background: 'linear-gradient(180deg, #FAFAF7 0%, #F5F3EE 50%, #FAFAF7 100%)' }}>
+        
+        {/* Background decoration */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div 
+            className="absolute inset-0 opacity-[0.3]"
+            style={{
+              backgroundImage: `radial-gradient(circle at 20% 30%, rgba(45,95,138,0.08) 0%, transparent 50%), radial-gradient(circle at 80% 70%, rgba(8,145,178,0.06) 0%, transparent 50%)`
+            }}
+          />
+        </div>
+
+        <div className="max-w-[1100px] mx-auto relative z-10">
+          <div className="text-center mb-10">
+            <div className="eyebrow flex justify-center mb-3">
+              <span className="inline-flex items-center gap-1.5">
+                <Eye size={12} /> See Kin in action
+              </span>
+            </div>
+            <h2 className="font-bold tracking-tight"
+              style={{ fontSize: 'clamp(24px, 3.5vw, 36px)', color: '#1A1A1E' }}>
+              Your command center<br />
+              <span className="text-[#5A5D6B] font-medium">for everything that changes.</span>
+            </h2>
+          </div>
+
+          {/* Dashboard mockup */}
+          <div className="dashboard-mockup relative" style={{ perspective: '1200px' }}>
+            {/* Glow behind */}
+            <div 
+              className="absolute -inset-4 rounded-3xl opacity-60 pointer-events-none"
+              style={{
+                background: 'radial-gradient(ellipse at center, rgba(45,95,138,0.15) 0%, transparent 70%)',
+                filter: 'blur(20px)'
+              }}
+            />
+            
+            <div 
+              className="bg-white rounded-2xl overflow-hidden shadow-2xl border border-[rgba(0,0,0,0.08)] relative"
+              style={{ transform: 'rotateX(2deg)' }}
+            >
+              {/* Window chrome */}
+              <div className="flex items-center px-4 py-3 border-b border-[rgba(0,0,0,0.06)]" style={{ background: '#F0EDE6' }}>
+                <div className="flex gap-2">
+                  <div className="w-3 h-3 rounded-full" style={{ background: '#FF5F57' }} />
+                  <div className="w-3 h-3 rounded-full" style={{ background: '#FEBC2E' }} />
+                  <div className="w-3 h-3 rounded-full" style={{ background: '#28C840' }} />
+                </div>
+                <div className="ml-4 flex-1 px-3 py-1 bg-white rounded-md text-[11px] text-[#5A5D6B] font-mono border border-[rgba(0,0,0,0.08)] text-center max-w-md mx-auto">
+                  app.kin.so/dashboard
+                </div>
+                <div className="w-16" />
+              </div>
+
+              {/* Dashboard content */}
+              <div className="p-5 grid grid-cols-12 gap-4" style={{ background: '#FAFAF7' }}>
+                {/* Sidebar */}
+                <div className="col-span-2 space-y-2">
+                  {[
+                    { label: 'Dashboard', active: true, icon: '📊' },
+                    { label: 'Watchlist', icon: '🔗' },
+                    { label: 'Signals', icon: '📡', badge: '3' },
+                    { label: 'Build', icon: '⚡' },
+                    { label: 'Browser', icon: '🌐' },
+                    { label: 'Digest', icon: '📅' },
+                    { label: 'Settings', icon: '⚙️' },
+                  ].map((item, i) => (
+                    <div 
+                      key={i}
+                      className="flex items-center gap-2 px-3 py-2 rounded-lg text-[12px] font-medium"
+                      style={{ 
+                        background: item.active ? '#1A1A1E' : 'transparent',
+                        color: item.active ? 'white' : '#5A5D6B'
+                      }}
+                    >
+                      <span>{item.icon}</span>
+                      <span className="truncate">{item.label}</span>
+                      {item.badge && (
+                        <span 
+                          className="ml-auto text-[10px] px-1.5 py-0.5 rounded-full font-bold"
+                          style={{ background: '#DC2626', color: 'white' }}
+                        >
+                          {item.badge}
+                        </span>
+                      )}
+                    </div>
+                  ))}
+                </div>
+
+                {/* Main content */}
+                <div className="col-span-10 space-y-4">
+                  {/* Stats row */}
+                  <div className="grid grid-cols-4 gap-3">
+                    {[
+                      { label: 'Watchlist', value: '12', color: '#1A1A1E' },
+                      { label: 'Active Signals', value: '3', color: '#DC2626' },
+                      { label: 'Collectors', value: '8', color: '#2D5F8A' },
+                      { label: 'This Week', value: '47', color: '#059669' },
+                    ].map((stat, i) => (
+                      <div key={i} className="bg-white rounded-xl p-3 border border-[rgba(0,0,0,0.06)]">
+                        <div className="text-[10px] font-semibold text-[#8A8D9A] uppercase tracking-wider">{stat.label}</div>
+                        <div className="text-[22px] font-bold mt-1" style={{ color: stat.color }}>{stat.value}</div>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Signals list */}
+                  <div className="bg-white rounded-xl border border-[rgba(0,0,0,0.06)] overflow-hidden">
+                    <div className="px-4 py-2.5 border-b border-[rgba(0,0,0,0.06)] flex items-center justify-between">
+                      <span className="text-[12px] font-semibold text-[#1A1A1E]">Recent Signals</span>
+                      <span className="text-[10px] text-[#2D5F8A] font-medium cursor-pointer hover:underline">View all →</span>
+                    </div>
+                    <div className="divide-y divide-[rgba(0,0,0,0.04)]">
+                      {[
+                        { level: 'high', color: '#DC2626', title: 'Deadline moved up by 14 days', site: 'scholarship.edu', time: '2m ago' },
+                        { level: 'med', color: '#D97706', title: 'New Enterprise pricing tier', site: 'competitor.com', time: '1h ago' },
+                        { level: 'low', color: '#059669', title: 'Documentation UI updated', site: 'api.example.com', time: '3h ago' },
+                      ].map((signal, i) => (
+                        <div key={i} className="px-4 py-3 flex items-center gap-3 hover:bg-[rgba(0,0,0,0.02)] transition-colors">
+                          <div 
+                            className="w-2 h-2 rounded-full flex-shrink-0"
+                            style={{ background: signal.color, boxShadow: `0 0 8px ${signal.color}60` }}
+                          />
+                          <div className="flex-1 min-w-0">
+                            <div className="text-[12px] font-semibold text-[#1A1A1E] truncate">{signal.title}</div>
+                            <div className="text-[10px] text-[#8A8D9A]">{signal.site}</div>
+                          </div>
+                          <span className="text-[10px] text-[#8A8D9A] flex-shrink-0">{signal.time}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Floating Kin badge */}
+            <div 
+              className="absolute -bottom-4 -right-4 bg-white rounded-2xl p-3 shadow-xl border border-[rgba(0,0,0,0.08)] flex items-center gap-2"
+              style={{ transform: 'rotate(-3deg)' }}
+            >
+              <KinCharacter size={36} state="found" animate={false} showShadow={false} />
+              <div>
+                <div className="text-[10px] font-semibold text-[#8A8D9A] uppercase tracking-wider">Kin AI</div>
+                <div className="text-[12px] font-bold text-[#1A1A1E]">3 changes detected</div>
+              </div>
+            </div>
+          </div>
+
+          {/* Live link */}
+          <div className="text-center mt-10">
+            <a 
+              href="https://kinbrightdata.vercel.app/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-[13px] font-medium hover:gap-3 transition-all"
+              style={{ color: '#2D5F8A' }}
+            >
+              <Globe size={14} />
+              View live on kinbrightdata.vercel.app
+              <ArrowRight size={14} />
+            </a>
           </div>
         </div>
       </section>

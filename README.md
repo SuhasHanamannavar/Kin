@@ -6,7 +6,25 @@
 
 **Built on Bright Data infrastructure**
 
+[![Live Demo](https://img.shields.io/badge/Live-Demo-2D5F8A?style=for-the-badge&logo=vercel&logoColor=white)](https://kinbrightdata.vercel.app/)
+[![GitHub](https://img.shields.io/badge/GitHub-Repository-1A1A1E?style=for-the-badge&logo=github&logoColor=white)](https://github.com/SuhasHanamannavar/Kin)
+[![Hackathon](https://img.shields.io/badge/Scrape--Verse-2026-DC2626?style=for-the-badge)](https://scrapeverse.dev/)
+[![Built with](https://img.shields.io/badge/Bright--Data-Powered-0891B2?style=for-the-badge)](https://brightdata.com/)
+
 </div>
+
+---
+
+## 🚀 Live Demo
+
+Experience Kin live at **[kinbrightdata.vercel.app](https://kinbrightdata.vercel.app/)**
+
+The landing page features a cinematic, scroll-driven design with:
+- 🕷️ Spider-Man themed hero with animated web strings
+- 📊 Interactive dashboard preview
+- 🎬 GSAP-powered scroll animations
+- 🎥 Hackathon story video with subtitles
+- 🐧 Kin the penguin character throughout
 
 ---
 
