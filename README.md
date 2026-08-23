@@ -4,7 +4,7 @@
 
 ### Know what changes on the web.
 
-**Built on Bright Data infrastructure**
+**Built on Bright Data infrastructure** 
 
 [![Live Demo](https://img.shields.io/badge/Live-Demo-2D5F8A?style=for-the-badge&logo=vercel&logoColor=white)](https://kinbrightdata.vercel.app/)
 [![GitHub](https://img.shields.io/badge/GitHub-Repository-1A1A1E?style=for-the-badge&logo=github&logoColor=white)](https://github.com/SuhasHanamannavar/Kin)
