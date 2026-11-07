@@ -1267,22 +1267,6 @@ export default function CinematicLanding() {
         </div>
 
         <div className="max-w-[900px] mx-auto relative z-10">
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-[11px] font-semibold tracking-[0.1em] uppercase mb-4"
-              style={{ background: 'rgba(220,38,38,0.15)', color: '#EF4444' }}>
-              <span className="w-2 h-2 rounded-full animate-pulse" style={{ background: '#EF4444' }} />
-              The Kin Story
-            </div>
-            <h2 className="font-bold tracking-tight mb-4"
-              style={{ fontSize: 'clamp(32px, 5vw, 52px)', color: 'white' }}>
-              Born from madness.<br />
-              <span style={{ color: '#EF4444' }}>Forged in chaos.</span>
-            </h2>
-            <p className="text-white/60 max-w-[500px] mx-auto"
-              style={{ fontSize: 'clamp(14px, 1.5vw, 16px)' }}>
-              Built to tame the chaos of the web. This is the story of how Kin came to life.
-            </p>
-          </div>
 
           {/* Video container */}
           <div className="relative rounded-2xl overflow-hidden shadow-2xl"
