@@ -16,9 +16,9 @@ import {
 gsap.registerPlugin(ScrollTrigger);
 
 // ============================================================
-// HACKATHON SUBTITLES for Spider-Man video
+// STORY SUBTITLES for Spider-Man video
 // ============================================================
-const hackathonSubtitles = [
+const storySubtitles = [
   { start: 0, end: 3, text: "Swinging into action..." },
   { start: 3, end: 7, text: "With great webs comes great awareness." },
   { start: 7, end: 11, text: "The pressure was intense..." },
@@ -373,7 +373,7 @@ export default function CinematicLanding() {
 
     const handleTimeUpdate = () => {
       const currentTime = video.currentTime;
-      const activeIndex = hackathonSubtitles.findIndex(
+      const activeIndex = storySubtitles.findIndex(
         sub => currentTime >= sub.start && currentTime < sub.end
       );
       if (activeIndex !== -1 && activeIndex !== currentSubtitle) {
@@ -1244,7 +1244,7 @@ export default function CinematicLanding() {
       </section>
 
       {/* ============================================================
-           HACKATHON STORY - SPIDER-MAN VIDEO
+           OUR STORY - SPIDER-MAN VIDEO
            ============================================================ */}
       <section id="story" className="relative py-32 px-6 overflow-hidden"
         style={{ background: '#0A0A0F' }}>
@@ -1271,7 +1271,7 @@ export default function CinematicLanding() {
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-[11px] font-semibold tracking-[0.1em] uppercase mb-4"
               style={{ background: 'rgba(220,38,38,0.15)', color: '#EF4444' }}>
               <span className="w-2 h-2 rounded-full animate-pulse" style={{ background: '#EF4444' }} />
-              Scrape-Verse Hackathon 2026
+              The Kin Story
             </div>
             <h2 className="font-bold tracking-tight mb-4"
               style={{ fontSize: 'clamp(32px, 5vw, 52px)', color: 'white' }}>
@@ -1280,7 +1280,7 @@ export default function CinematicLanding() {
             </h2>
             <p className="text-white/60 max-w-[500px] mx-auto"
               style={{ fontSize: 'clamp(14px, 1.5vw, 16px)' }}>
-              WeMakeDevs × Bright Data. This is the story of how Kin came to life.
+              Built to tame the chaos of the web. This is the story of how Kin came to life.
             </p>
           </div>
 
@@ -1300,7 +1300,7 @@ export default function CinematicLanding() {
               playsInline
               poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 9'%3E%3Crect fill='%230A0A0F' width='16' height='9'/%3E%3C/svg%3E"
             >
-              <source src="/videos/spiderman-hackathon.mp4" type="video/mp4" />
+              <source src="/videos/spiderman-story.mp4" type="video/mp4" />
             </video>
 
             {/* Subtitle overlay */}
@@ -1318,7 +1318,7 @@ export default function CinematicLanding() {
                     textShadow: '0 2px 10px rgba(0,0,0,0.5)'
                   }}
                 >
-                  {hackathonSubtitles[currentSubtitle]?.text || hackathonSubtitles[0].text}
+                  {storySubtitles[currentSubtitle]?.text || storySubtitles[0].text}
                 </span>
               </div>
             </div>
@@ -1406,8 +1406,8 @@ export default function CinematicLanding() {
             <span className="text-[12px] text-[#8A8D9A] ml-2">Know what changes on the web.</span>
           </div>
           <div className="flex items-center gap-6 text-[12px] text-[#8A8D9A]">
-            <span>Built for Scrape-Verse Hackathon 2026</span>
-            <span>WeMakeDevs × Bright Data</span>
+            <span>Empowering web intelligence</span>
+            <span>Powered by Bright Data</span>
           </div>
         </div>
       </footer>

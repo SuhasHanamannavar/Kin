@@ -8,7 +8,7 @@
 
 [![Live Demo](https://img.shields.io/badge/Live-Demo-2D5F8A?style=for-the-badge&logo=vercel&logoColor=white)](https://kinbrightdata.vercel.app/)
 [![GitHub](https://img.shields.io/badge/GitHub-Repository-1A1A1E?style=for-the-badge&logo=github&logoColor=white)](https://github.com/SuhasHanamannavar/Kin)
-[![Hackathon](https://img.shields.io/badge/Scrape--Verse-2026-DC2626?style=for-the-badge)](https://scrapeverse.dev/)
+
 [![Built with](https://img.shields.io/badge/Bright--Data-Powered-0891B2?style=for-the-badge)](https://brightdata.com/)
 
 </div>
@@ -27,7 +27,7 @@ The landing page features a cinematic, scroll-driven design with:
 - 🕷️ Spider-Man themed hero with animated web strings
 - 📊 Interactive dashboard preview
 - 🎬 GSAP-powered scroll animations
-- 🎥 Hackathon story video with subtitles
+- 🎥 Cinematic story video with subtitles
 - 🐧 Kin the penguin character throughout
 
 ---
@@ -39,7 +39,7 @@ The landing page features a cinematic, scroll-driven design with:
 - [Features](#features)
 - [Bright Data Integration](#bright-data-integration)
 - [Screenshots](#screenshots)
-- [Judging Criteria](#judging-criteria)
+- [Key Highlights](#key-highlights)
 - [Technical Stack](#technical-stack)
 - [Getting Started](#getting-started)
 - [Project Structure](#project-structure)
@@ -214,7 +214,7 @@ export async function fetchPageContent(url) {
 
 ---
 
-## Judging Criteria
+## Key Highlights
 
 ### 1. Potential Impact
 
@@ -228,7 +228,7 @@ The natural language to collector pipeline removes the technical barrier to web 
 
 The project uses Next.js 14 with TypeScript throughout. Authentication runs through Clerk with proper session management. Supabase PostgreSQL with Row Level Security stores user data. The library layer cleanly separates concerns, error handling covers all external API calls, and every API route validates authentication and scopes queries to the current user.
 
-### 4. Use of Scraper Studio
+### 4. Collector Studio Integration
 
 Every "Build with Kin" request creates an actual Bright Data collector through the Collector Management API. The integration covers the full lifecycle: create, run, check status, and delete. The language model converts natural language into structured collector configurations with proper scheduling and extraction rules. Collectors appear in the Bright Data dashboard as well as in Kin.
 
@@ -236,9 +236,9 @@ Every "Build with Kin" request creates an actual Bright Data collector through t
 
 Bright Data's Web Unlocker provides the global proxy network, CAPTCHA solving, and anti-blocking capabilities that make Kin reliable. The platform's self-healing infrastructure automatically maintains collectors when websites change. The code implements graceful degradation — if Bright Data is unavailable during development, a direct fetch fallback keeps the interface functional.
 
-### 6. Presentation
+### 6. Design and Polish
 
-The interface follows a clean, macOS-inspired design. This README documents every feature and integration point. Architecture diagrams and screenshots illustrate how the system works. All major features function end-to-end and are ready for demonstration.
+The interface follows a clean, macOS-inspired design. This README documents every feature and integration point. Architecture diagrams and screenshots illustrate how the system works. All major features function end-to-end for production use.
 
 ---
 
@@ -413,8 +413,8 @@ MIT © 2026 Suhas Hanamannavar
 
 <div align="center">
 
-Built for Scrape-Verse Hackathon 2026
+**Kin** — Know what changes on the web.
 
-WeMakeDevs × Bright Data
+
 
 </div>
