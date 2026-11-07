@@ -212,29 +212,29 @@ export async function fetchPageContent(url) {
 
 ## Key Highlights
 
-### 1. Potential Impact
+### Core Problem & Impact
 
 Kin addresses a real problem: information overload from constant website changes. Researchers, analysts, students, and competitive intelligence teams currently waste hours manually checking pages. The multi-tenant architecture scales to thousands of users, and the natural language interface lowers the barrier for non-technical users.
 
-### 2. Creativity and Innovation
+### Natural Language to Collector Pipeline
 
 The natural language to collector pipeline removes the technical barrier to web scraping. Users do not need to know CSS selectors or scheduling logic. The penguin character, Kin, provides a memorable interface guide, and the dual dashboard integration means collectors exist as real Bright Data objects, not just database records.
 
-### 3. Technical Excellence
+### Production-Grade Architecture
 
 The project uses Next.js 14 with TypeScript throughout. Authentication runs through Clerk with proper session management. Supabase PostgreSQL with Row Level Security stores user data. The library layer cleanly separates concerns, error handling covers all external API calls, and every API route validates authentication and scopes queries to the current user.
 
-### 4. Collector Studio Integration
+### Deep Bright Data Integration
 
 Every "Build with Kin" request creates an actual Bright Data collector through the Collector Management API. The integration covers the full lifecycle: create, run, check status, and delete. The language model converts natural language into structured collector configurations with proper scheduling and extraction rules. Collectors appear in the Bright Data dashboard as well as in Kin.
 
-### 5. Reliability and Self-Healing
+### Reliability and Self-Healing
 
 Bright Data's Web Unlocker provides the global proxy network, CAPTCHA solving, and anti-blocking capabilities that make Kin reliable. The platform's self-healing infrastructure automatically maintains collectors when websites change. The code implements graceful degradation — if Bright Data is unavailable during development, a direct fetch fallback keeps the interface functional.
 
-### 6. Design and Polish
+### Thoughtful macOS-Inspired Design
 
-The interface follows a clean, macOS-inspired design. This README documents every feature and integration point. Architecture diagrams and screenshots illustrate how the system works. All major features function end-to-end for production use.
+The interface follows a clean, macOS-inspired design system with tactile feedback and stateful animations. Architecture diagrams, responsive controls, and unified iconography deliver a polished experience across all workflows.
 
 ---
 
