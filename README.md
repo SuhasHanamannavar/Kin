@@ -8,6 +8,7 @@
 
 [![Live Demo](https://img.shields.io/badge/Live-Demo-2D5F8A?style=for-the-badge&logo=vercel&logoColor=white)](https://kin-ten-theta.vercel.app)
 [![GitHub](https://img.shields.io/badge/GitHub-Repository-1A1A1E?style=for-the-badge&logo=github&logoColor=white)](https://github.com/SuhasHanamannavar/Kin)
+[![Commit Style](https://img.shields.io/badge/Commits-Conventional-FE5196?style=for-the-badge&logo=git&logoColor=white)](CONTRIBUTING.md)
 
 [![Built with](https://img.shields.io/badge/Bright--Data-Powered-0891B2?style=for-the-badge)](https://brightdata.com/)
 
@@ -40,6 +41,7 @@ The landing page features a cinematic, scroll-driven design with:
 - [Getting Started](#getting-started)
 - [Project Structure](#project-structure)
 - [Security](#security-and-user-isolation)
+- [Contributing](#contributing)
 - [License](#license)
 
 ---
@@ -377,6 +379,7 @@ Kin/
 ├── types/
 │   └── index.ts
 ├── .env.example
+├── CONTRIBUTING.md               # Git commit & contributing conventions
 ├── middleware.ts
 ├── next.config.js
 ├── package.json
@@ -396,6 +399,35 @@ Kin implements multiple layers of user isolation:
 4. Each Bright Data collector belongs to exactly one user
 5. No shared state exists between user accounts
 6. Secrets live in environment variables, never in committed code
+
+---
+
+## Contributing
+
+We welcome contributions! To maintain a clear, searchable, and professional Git history, all commits must follow the **Conventional Commits** specification:
+
+```text
+<type>[optional scope]: <description>
+
+[optional body]
+
+[optional footer]
+```
+
+### Commit Types Quick Reference
+
+| Type | When to Use | Example |
+|---|---|---|
+| `feat` | A new feature | `feat(api): add export signals as JSON` |
+| `fix` | A bug fix | `fix(auth): prevent unauthorized redirect loop` |
+| `refactor` | Code restructuring without altering behavior | `refactor(db): streamline DynamoDB query helpers` |
+| `docs` | Documentation changes | `docs: update setup and commit conventions` |
+| `perf` | Performance optimizations | `perf(scraper): reduce DOM diff computation time` |
+| `test` | Adding or updating tests | `test(watchlist): add URL validator unit tests` |
+| `build` | Build system or dependencies | `build: update Next.js dependencies` |
+| `chore` | Maintenance tasks | `chore: clean up unused assets` |
+
+Please read our full [Contributing Guidelines & Commit Rules](CONTRIBUTING.md) for the complete checklist and formatting standards.
 
 ---
 
