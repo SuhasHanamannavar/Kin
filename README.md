@@ -222,7 +222,7 @@ The natural language to collector pipeline removes the technical barrier to web 
 
 ### Production-Grade Architecture
 
-The project uses Next.js 14 with TypeScript throughout. Authentication runs through Clerk with proper session management. Supabase PostgreSQL with Row Level Security stores user data. The library layer cleanly separates concerns, error handling covers all external API calls, and every API route validates authentication and scopes queries to the current user.
+The project uses Next.js 14 with TypeScript throughout. Authentication runs through Clerk with proper session management. AWS DynamoDB with single-table design stores user data with hardware-level isolation. The library layer cleanly separates concerns, error handling covers all external API calls, and every API route validates authentication and scopes queries to the current user.
 
 ### Deep Bright Data Integration
 
@@ -246,7 +246,7 @@ The interface follows a clean, macOS-inspired design system with tactile feedbac
 | Styling | Tailwind CSS | Design system |
 | Authentication | Clerk | User management and sessions |
 | Data Acquisition | Bright Data | Collector API, Web Unlocker, proxies, self-healing |
-| Database | Supabase PostgreSQL | User data, watchlists, signals |
+| Database | AWS DynamoDB | User data, watchlists, signals |
 | Language Models | Zen Mimo V2.5, Groq fallback | Intent parsing, change analysis, chat |
 | Email | Resend | Weekly digests and notifications |
 | Icons | Lucide React | Consistent iconography |
@@ -262,7 +262,7 @@ The interface follows a clean, macOS-inspired design system with tactile feedbac
 - A Clerk account for authentication
 - A Bright Data account for scraping infrastructure
 - An OpenCode Zen API key for language model access
-- A Supabase account for the database
+- An AWS account for DynamoDB storage
 - Resend account (optional) for email notifications
 
 ### Installation
@@ -289,10 +289,11 @@ BRIGHTDATA_ZONE=
 # OpenCode Zen
 ZEN_API_KEY=
 
-# Supabase
-NEXT_PUBLIC_SUPABASE_URL=
-NEXT_PUBLIC_SUPABASE_ANON_KEY=
-SUPABASE_SERVICE_ROLE_KEY=
+# AWS DynamoDB
+AWS_REGION=us-east-1
+AWS_ACCESS_KEY_ID=
+AWS_SECRET_ACCESS_KEY=
+DYNAMODB_TABLE_NAME=kin-data
 
 # Resend (optional)
 # RESEND_API_KEY=
@@ -303,9 +304,9 @@ NEXT_PUBLIC_APP_URL=http://localhost:3000
 
 ### Database Setup
 
-1. Create a Supabase project
-2. Run the SQL schema from `supabase/schema.sql` in the Supabase SQL Editor
-3. Add the connection details to `.env.local`
+Kin uses Amazon DynamoDB single-table architecture (`kin-data`). The table is automatically configured with On-Demand capacity (100% covered by the AWS Always-Free Tier with zero idle credit consumption).
+
+
 
 ### Development
 
@@ -368,8 +369,8 @@ Kin/
 │       └── screenshots/          # Product screenshots
 ├── styles/
 │   └── globals.css
-├── supabase/
-│   └── schema.sql
+
+
 ├── types/
 │   └── index.ts
 ├── .env.example

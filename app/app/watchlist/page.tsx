@@ -172,7 +172,7 @@ export default function WatchlistPage() {
           <div className="mb-6 p-4 rounded-xl border border-amber-200 bg-amber-50 text-amber-900 flex items-start gap-3 text-[13.5px]">
             <Database className="text-amber-600 mt-[2px] flex-shrink-0" size={18} />
             <div className="flex-1">
-              <span className="font-bold">Demo mode:</span> Connect your Supabase database for persistent storage and proper user isolation.
+              <span className="font-bold">Demo mode:</span> Connect your AWS database for persistent storage and proper user isolation.
             </div>
           </div>
         )}

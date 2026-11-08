@@ -1319,7 +1319,7 @@ export default function CinematicLanding() {
 
           {/* Tech stack badges */}
           <div className="mt-10 flex flex-wrap justify-center gap-3">
-            {['Next.js 14', 'TypeScript', 'Bright Data', 'Clerk', 'Supabase', 'Zen Mimo AI', 'Groq', 'Resend'].map((tech, i) => (
+            {['Next.js 14', 'TypeScript', 'Bright Data', 'Clerk', 'AWS DynamoDB', 'Zen Mimo AI', 'Groq', 'Resend'].map((tech, i) => (
               <span 
                 key={i}
                 className="px-4 py-2 rounded-full text-[12px] font-medium"

@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getAuthContext } from '@/lib/auth-helper';
-import { createServiceClient } from '@/supabase/server';
+import { markAllSignalsRead } from '@/lib/db';
 
 // ============================================================
 // POST /api/signals/mark-all-read — Mark all user's signals as read
@@ -15,15 +15,7 @@ export async function POST(request: NextRequest) {
   }
 
   try {
-    const supabase = createServiceClient();
-    const { error } = await supabase
-      .from('signals')
-      .update({ read: true })
-      .eq('user_id', auth.internalUserId) // CRITICAL: USER ISOLATION
-      .eq('read', false);
-
-    if (error) throw error;
-
+    await markAllSignalsRead(auth.internalUserId);
     return NextResponse.json({ success: true });
   } catch (err: any) {
     return NextResponse.json(
