@@ -6,7 +6,7 @@
 
 **Built on Bright Data infrastructure** 
 
-[![Live Demo](https://img.shields.io/badge/Live-Demo-2D5F8A?style=for-the-badge&logo=vercel&logoColor=white)](https://kinbrightdata.vercel.app/)
+[![Live Demo](https://img.shields.io/badge/Live-Demo-2D5F8A?style=for-the-badge&logo=vercel&logoColor=white)](https://kin-ten-theta.vercel.app)
 [![GitHub](https://img.shields.io/badge/GitHub-Repository-1A1A1E?style=for-the-badge&logo=github&logoColor=white)](https://github.com/SuhasHanamannavar/Kin)
 
 [![Built with](https://img.shields.io/badge/Bright--Data-Powered-0891B2?style=for-the-badge)](https://brightdata.com/)
@@ -17,7 +17,7 @@
 
 ## 🚀 Live Demo
 
-Experience Kin live at **[kinbrightdata.vercel.app](https://kinbrightdata.vercel.app/)**
+Experience Kin live at **[kin-ten-theta.vercel.app](https://kin-ten-theta.vercel.app)**
 
 The landing page features a cinematic, scroll-driven design with:
 - 🕷️ Spider-Man themed hero with animated web strings
@@ -100,7 +100,7 @@ Users type what they want. Kin builds the scraper.
 
 - Ask questions about monitored data in natural language
 - Responses grounded in actual watchlist and signal history
-- Built on Zen Mimo V2.5 with Groq fallback
+- Built on Groq Cloud high-performance inference and Zen Mimo V2.5
 
 ### Weekly Digest
 
@@ -247,7 +247,7 @@ The interface follows a clean, macOS-inspired design system with tactile feedbac
 | Authentication | Clerk | User management and sessions |
 | Data Acquisition | Bright Data | Collector API, Web Unlocker, proxies, self-healing |
 | Database | AWS DynamoDB | User data, watchlists, signals |
-| Language Models | Zen Mimo V2.5, Groq fallback | Intent parsing, change analysis, chat |
+| Language Models | Groq Cloud, Zen Mimo V2.5 | Intent parsing, change analysis, chat |
 | Email | Resend | Weekly digests and notifications |
 | Icons | Lucide React | Consistent iconography |
 | Deployment | Vercel | Production hosting |
@@ -261,7 +261,7 @@ The interface follows a clean, macOS-inspired design system with tactile feedbac
 - Node.js 18 or later
 - A Clerk account for authentication
 - A Bright Data account for scraping infrastructure
-- An OpenCode Zen API key for language model access
+- A Groq API key (or OpenCode Zen API key) for language model inference
 - An AWS account for DynamoDB storage
 - Resend account (optional) for email notifications
 
@@ -278,16 +278,20 @@ cp .env.example .env.local
 ### Environment Variables
 
 ```env
-# Clerk
+# Clerk Authentication
 NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=
 CLERK_SECRET_KEY=
 
-# Bright Data
+# Bright Data Infrastructure
 BRIGHTDATA_API_KEY=
-BRIGHTDATA_ZONE=
+BRIGHTDATA_ZONE=unblocker
+BRIGHTDATA_API_BASE=https://api.brightdata.com
 
-# OpenCode Zen
+# AI Language Models (Groq Cloud & Zen Mimo V2.5)
+GROQ_API_KEY=
 ZEN_API_KEY=
+ZEN_API_BASE_URL=https://opencode.ai/zen/v1
+ZEN_MODEL=mimo-v2.5-free
 
 # AWS DynamoDB
 AWS_REGION=us-east-1
@@ -295,18 +299,16 @@ AWS_ACCESS_KEY_ID=
 AWS_SECRET_ACCESS_KEY=
 DYNAMODB_TABLE_NAME=kin-data
 
-# Resend (optional)
-# RESEND_API_KEY=
+# Resend Email Delivery (optional)
+RESEND_API_KEY=
 
-# Application
-NEXT_PUBLIC_APP_URL=http://localhost:3000
+# Application URL
+NEXT_PUBLIC_APP_URL=https://kin-ten-theta.vercel.app
 ```
 
 ### Database Setup
 
-Kin uses Amazon DynamoDB single-table architecture (`kin-data`). The table is automatically configured with On-Demand capacity (100% covered by the AWS Always-Free Tier with zero idle credit consumption).
-
-
+Kin uses Amazon DynamoDB single-table architecture (`kin-data`). The table is configured with On-Demand capacity (100% covered by the AWS Always-Free Tier with zero idle credit consumption).
 
 ### Development
 
@@ -350,6 +352,8 @@ Kin/
 │   │   ├── signals/              # Signals list
 │   │   └── watchlist/            # Watchlist management
 │   ├── auth/                     # Clerk authentication pages
+│   │   ├── sign-in/
+│   │   └── sign-up/
 │   ├── layout.tsx
 │   └── page.tsx                  # Landing page
 ├── components/
@@ -358,8 +362,9 @@ Kin/
 ├── lib/
 │   ├── ai.ts                     # Language model integration
 │   ├── auth-helper.ts            # Clerk auth utilities
+│   ├── aws-dynamodb.ts           # AWS DynamoDB client initialization
 │   ├── brightdata.ts             # Bright Data API wrapper
-│   ├── db.ts                     # Database operations
+│   ├── db.ts                     # Database operations (DynamoDB)
 │   ├── emails.ts                 # Email templates
 │   ├── scraper.ts                # Scraping logic
 │   └── utils.ts                  # Shared utilities
@@ -369,8 +374,6 @@ Kin/
 │       └── screenshots/          # Product screenshots
 ├── styles/
 │   └── globals.css
-
-
 ├── types/
 │   └── index.ts
 ├── .env.example
@@ -388,8 +391,8 @@ Kin/
 Kin implements multiple layers of user isolation:
 
 1. Every API route validates the Clerk session before processing
-2. All database queries include user ID filtering
-3. PostgreSQL Row Level Security policies enforce isolation at the database level
+2. All database queries include internal user ID filtering
+3. AWS DynamoDB partition key isolation (`PK = USER#<userId>`) strictly scopes all queries to the authenticated user's partition, preventing cross-tenant access
 4. Each Bright Data collector belongs to exactly one user
 5. No shared state exists between user accounts
 6. Secrets live in environment variables, never in committed code
@@ -411,7 +414,5 @@ MIT © 2026 Suhas Hanamannavar
 <div align="center">
 
 **Kin** — Know what changes on the web.
-
-
 
 </div>

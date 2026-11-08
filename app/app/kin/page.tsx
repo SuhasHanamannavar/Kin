@@ -76,7 +76,7 @@ export default function KinPage() {
       });
       const data = await res.json();
       
-      if (data.success) {
+      if (data.success && data.response) {
         const assistantMessage: Message = {
           id: `assistant-${Date.now()}`,
           role: 'assistant',
@@ -84,9 +84,24 @@ export default function KinPage() {
           created_at: new Date().toISOString(),
         };
         setMessages(prev => [...prev, assistantMessage]);
+      } else {
+        const fallbackMessage: Message = {
+          id: `assistant-${Date.now()}`,
+          role: 'assistant',
+          content: data.error || "I'm having a little trouble connecting right now, but I'm still watching your websites!",
+          created_at: new Date().toISOString(),
+        };
+        setMessages(prev => [...prev, fallbackMessage]);
       }
     } catch (e) {
       console.error(e);
+      const fallbackMessage: Message = {
+        id: `assistant-${Date.now()}`,
+        role: 'assistant',
+        content: "I'm having a little trouble connecting right now, but I'm still watching your websites!",
+        created_at: new Date().toISOString(),
+      };
+      setMessages(prev => [...prev, fallbackMessage]);
     } finally {
       setLoading(false);
     }

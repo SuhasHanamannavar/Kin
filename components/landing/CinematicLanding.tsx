@@ -694,14 +694,14 @@ export default function CinematicLanding() {
           {/* Live link */}
           <div className="text-center mt-10">
             <a 
-              href="https://kinbrightdata.vercel.app/" 
+              href="https://kin-ten-theta.vercel.app" 
               target="_blank" 
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 text-[13px] font-medium hover:gap-3 transition-all"
               style={{ color: '#2D5F8A' }}
             >
               <Globe size={14} />
-              View live on kinbrightdata.vercel.app
+              View live on kin-ten-theta.vercel.app
               <ArrowRight size={14} />
             </a>
             
